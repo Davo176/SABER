@@ -10,6 +10,8 @@ all: test/PQCgenKAT_kem \
      test/test_kex \
      test/kem \
 
+additionalTesting: test/additionalEncapTesting test/additionalDecapTesting test/additionalRandTesting
+
 SOURCES = pack_unpack.c poly.c fips202.c verify.c cbd.c SABER_indcpa.c kem.c
 HEADERS = SABER_params.h pack_unpack.h poly.h rng.h fips202.h verify.h cbd.h SABER_indcpa.h 
 
@@ -18,6 +20,15 @@ test/test_kex: $(SOURCES) $(HEADERS) rng.o test/test_kex.c
 
 test/PQCgenKAT_kem: $(SOURCES) $(HEADERS) rng.o test/PQCgenKAT_kem.c 
 	$(CC) $(NISTFLAGS) -o $@ $(SOURCES) rng.o test/PQCgenKAT_kem.c -lcrypto
+
+test/additionalEncapTesting: $(ENCAPSOURCES) $(HEADERS) rng.o test/addEncapTesting.c 
+	$(CC) $(NISTFLAGS) -o $@ $(SOURCES) rng.o test/addEncapTesting.c -lcrypto
+
+test/additionalDecapTesting: $(DECAPSOURCES) $(HEADERS) rng.o test/addDecapTesting.c 
+	$(CC) $(NISTFLAGS) -o $@ $(SOURCES) rng.o test/addDecapTesting.c -lcrypto
+
+test/additionalRandTesting: $(ENCAPSOURCES) $(HEADERS) rng.o test/addRandTesting.c 
+	$(CC) $(NISTFLAGS) -o $@ $(SOURCES) rng.o test/additionalEncapTesting.c -lcrypto
 
 test/kem: $(SOURCES) $(HEADERS) rng.o test/kem.c
 	$(CC) $(CFLAGS) -o $@ $(SOURCES) rng.o test/kem.c -lcrypto

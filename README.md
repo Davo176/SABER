@@ -21,4 +21,9 @@ SABER is a Mod-LWR based KEM finalist in the NIST Post-Quantum Cryptography Stan
 * Use `./test/PQCgenKAT_kem` to generate KAT files
 
 
-
+# Additional Testing Instructions
+* Select the desired algorithm in `SABER_params.h`. This can be done by commenting/uncommenting the appropriate line with `#define` in the code.  
+* Use `make additionalTesting` to compile the source codes 
+* Use `./test/additionalEncapTesting` to generate KAT files
+* Use `./test/additionalDecapTesting` to generate KAT files
+* Use `./test/additionalRandTesting` to generate KAT files
