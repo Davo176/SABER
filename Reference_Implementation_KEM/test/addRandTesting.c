@@ -40,12 +40,12 @@ main()
     int i;
 
     // Create the REQUEST file
-    sprintf(fn_req, "PQCkemKAT_%d.req", CRYPTO_SECRETKEYBYTES);
+    sprintf(fn_req, "addRand_%d.req", CRYPTO_SECRETKEYBYTES);
     if ( (fp_req = fopen(fn_req, "w")) == NULL ) {
         printf("Couldn't open <%s> for write\n", fn_req);
         return KAT_FILE_OPEN_ERROR;
     }
-    sprintf(fn_rsp, "PQCkemKAT_%d.rsp", CRYPTO_SECRETKEYBYTES);
+    sprintf(fn_rsp, "addRand_%d.rsp", CRYPTO_SECRETKEYBYTES);
     if ( (fp_rsp = fopen(fn_rsp, "w")) == NULL ) {
         printf("Couldn't open <%s> for write\n", fn_rsp);
         return KAT_FILE_OPEN_ERROR;

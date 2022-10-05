@@ -28,7 +28,7 @@ test/additionalDecapTesting: $(DECAPSOURCES) $(HEADERS) rng.o test/addDecapTesti
 	$(CC) $(NISTFLAGS) -o $@ $(SOURCES) rng.o test/addDecapTesting.c -lcrypto
 
 test/additionalRandTesting: $(ENCAPSOURCES) $(HEADERS) rng.o test/addRandTesting.c 
-	$(CC) $(NISTFLAGS) -o $@ $(SOURCES) rng.o test/additionalEncapTesting.c -lcrypto
+	$(CC) $(NISTFLAGS) -o $@ $(SOURCES) rng.o test/addRandTesting.c -lcrypto
 
 test/kem: $(SOURCES) $(HEADERS) rng.o test/kem.c
 	$(CC) $(CFLAGS) -o $@ $(SOURCES) rng.o test/kem.c -lcrypto
