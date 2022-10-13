@@ -21,14 +21,23 @@ test/test_kex: $(SOURCES) $(HEADERS) rng.o test/test_kex.c
 test/PQCgenKAT_kem: $(SOURCES) $(HEADERS) rng.o test/PQCgenKAT_kem.c 
 	$(CC) $(NISTFLAGS) -o $@ $(SOURCES) rng.o test/PQCgenKAT_kem.c -lcrypto
 
-test/additionalEncapTesting: $(ENCAPSOURCES) $(HEADERS) rng.o test/addEncapTesting.c 
+test/additionalEncapTesting: $(SOURCES) $(HEADERS) rng.o test/addEncapTesting.c 
 	$(CC) $(NISTFLAGS) -o $@ $(SOURCES) rng.o test/addEncapTesting.c -lcrypto
 
-test/additionalDecapTesting: $(DECAPSOURCES) $(HEADERS) rng.o test/addDecapTesting.c 
+test/additionalDecapTesting: $(SOURCES) $(HEADERS) rng.o test/addDecapTesting.c 
 	$(CC) $(NISTFLAGS) -o $@ $(SOURCES) rng.o test/addDecapTesting.c -lcrypto
 
-test/additionalRandTesting: $(ENCAPSOURCES) $(HEADERS) rng.o test/addRandTesting.c 
+test/additionalRandTesting: $(SOURCES) $(HEADERS) rng.o test/addRandTesting.c 
 	$(CC) $(NISTFLAGS) -o $@ $(SOURCES) rng.o test/addRandTesting.c -lcrypto
+
+test/createKeyPairs: $(SOURCES) $(HEADERS) rng.o test/createKeyPairs.c 
+	$(CC) $(NISTFLAGS) -o $@ $(SOURCES) rng.o test/createKeyPairs.c -lcrypto
+
+test/createEncaps: $(SOURCES) $(HEADERS) rng.o test/createKeyPairs.c 
+	$(CC) $(NISTFLAGS) -o $@ $(SOURCES) rng.o test/createEncapsulation.c -lcrypto
+
+test/checkDecaps: $(SOURCES) $(HEADERS) rng.o test/createKeyPairs.c 
+	$(CC) $(NISTFLAGS) -o $@ $(SOURCES) rng.o test/checkDecapsulations.c -lcrypto
 
 test/kem: $(SOURCES) $(HEADERS) rng.o test/kem.c
 	$(CC) $(CFLAGS) -o $@ $(SOURCES) rng.o test/kem.c -lcrypto
