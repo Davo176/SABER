@@ -39,9 +39,9 @@ main()
     //uncomment one of these to pick
 
     // Create the REQUEST file
-    sprintf(fn_req, "keypairs_java_%d.rsp", CRYPTO_SECRETKEYBYTES); //should be changed from _ref_ to _java_ or _csharp_
+    sprintf(fn_req, "keypairs_csharp_%d.rsp", CRYPTO_SECRETKEYBYTES); //should be changed from _ref_ to _java_ or _csharp_
 
-    sprintf(fn_rsp, "encapsulation_java_ref_%d.rsp",CRYPTO_SECRETKEYBYTES); //should be _bcmode_ref_
+    sprintf(fn_rsp, "encapsulation_csharp_ref_%d.rsp",CRYPTO_SECRETKEYBYTES); //should be _bcmode_ref_
     if ( (fp_rsp = fopen(fn_rsp, "w")) == NULL ) {
         printf("Couldn't open <%s> for write\n", fn_rsp);
         return KAT_FILE_OPEN_ERROR;
